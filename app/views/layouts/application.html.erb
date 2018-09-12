@@ -10,6 +10,18 @@
   </head>
 
   <body>
-    <%= yield %>
+    <header class="navbar">
+      <section class="navbar-section">
+      </section>
+      <section class="navbar-section navbar-center">
+        <%= link_to "Authy Devise Example", root_path, class: "navbar-brand" %>
+      </section>
+      <section class="navbar-section">
+      </section>
+    </header>
+
+    <main class="container">
+      <%= yield %>
+    </main>
   </body>
 </html>
