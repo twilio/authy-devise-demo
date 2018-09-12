@@ -42,4 +42,21 @@ Things you may want to cover:
   rails generate controller welcome index
   ```
 
-3. TODO
+3. Add the root path to your `config/routes.rb`
+
+  ```ruby
+  Rails.application.routes.draw do
+    root :to => 'welcome#index'
+  end
+  ```
+
+4. Add the `devise` and `devise-authy` gems to your `Gemfile` and install
+
+  ```ruby
+  gem 'devise', '~> 4.5'
+  gem 'devise-authy', '~> 1.9'
+  ```
+
+  ```bash
+  bundle install
+  ```
