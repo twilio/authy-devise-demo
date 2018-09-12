@@ -60,3 +60,21 @@ Things you may want to cover:
   ```bash
   bundle install
   ```
+
+5. Install devise
+
+  ```bash
+  rails generate devise:install
+  ```
+
+6. Add flash messages to the `app/views/layouts/application.html.erb` and update the default URL options in `config/environments/development.rb`
+
+  ```html
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+  ```
+
+  ```ruby
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  ```
+

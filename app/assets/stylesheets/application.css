@@ -21,3 +21,7 @@
 .empty {
   margin-bottom: 1em;
 }
+
+.toast p{
+  margin:0;
+}

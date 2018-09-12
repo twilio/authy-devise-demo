@@ -21,6 +21,12 @@
     </header>
 
     <main class="container">
+      <% flash.each do |level, text| %>
+        <div class="<%= flash_class(level) %>">
+          <p><%= text %></p>
+        </div>
+      <% end %>
+
       <%= yield %>
     </main>
   </body>
