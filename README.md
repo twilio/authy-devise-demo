@@ -29,4 +29,17 @@ Things you may want to cover:
 
 ## Building this demo yourself
 
-TODO
+1. Create a new Rails application
+
+  ```bash
+  rails new authy-devise-demo
+  cd authy-devise-demo
+  ```
+
+2. Generate a controller
+
+  ```bash
+  rails generate controller welcome index
+  ```
+
+3. TODO
