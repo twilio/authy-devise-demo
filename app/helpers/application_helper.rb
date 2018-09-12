@@ -6,4 +6,9 @@ module ApplicationHelper
       else "toast toast-#{level}"
     end
   end
+
+  def gravatar_url(email, size)
+    gravatar = Digest::MD5::hexdigest(email.downcase).downcase
+    url = "http://gravatar.com/avatar/#{gravatar}?s=#{size}"
+  end
 end

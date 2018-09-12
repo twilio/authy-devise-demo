@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
   devise_for :users
-  root :to => 'welcome#index'
+  get "signed_in", to: "welcome#signed_in"
+  root :to => "welcome#index"
 end
