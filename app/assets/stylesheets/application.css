@@ -16,6 +16,8 @@
 
 .navbar {
   padding: 0.4em;
+  max-width: 1280px;
+  margin: 0 auto;
 }
 
 .empty {

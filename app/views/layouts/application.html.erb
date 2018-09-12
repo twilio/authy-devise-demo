@@ -17,6 +17,12 @@
         <%= link_to "Authy Devise Example", root_path, class: "navbar-brand" %>
       </section>
       <section class="navbar-section">
+        <% if user_signed_in? %>
+          <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+        <% else %>
+          <%= link_to "Sign in", new_user_session_path, class: "btn btn-link" %>
+          <%= link_to "Sign up", new_user_registration_path, class: "btn btn-link" %>
+        <% end %>
       </section>
     </header>
 

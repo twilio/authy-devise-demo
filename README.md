@@ -78,3 +78,9 @@ Things you may want to cover:
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   ```
 
+7. Generate a user model with Devise and migrate the database
+
+  ```bash
+  rails generate devise User
+  rails db:migrate
+  ```
