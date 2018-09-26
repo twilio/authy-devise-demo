@@ -1,0 +1,81 @@
+<section class="columns">
+  <div class="column col-8 col-md-12 col-mx-auto">
+    <div class="card">
+      <div class="card-header">
+        <h2>How to build this app</h2>
+        <p class="card-subtitle text-gray">Follow these steps to build a new application with devise and authy-devise</p>
+      </div>
+      <div class="card-body">
+      <ol>
+        <li>
+          Create a new Rails application
+          <pre class="code"><code>rails new authy-devise-demo
+  cd authy-devise-demo</code></pre>
+        </li>
+        <li>Generate a controller
+          <pre class="code"><code>rails generate controller welcome index signed_in</code></pre>
+        </li>
+        <li>Add a root path and signed in path to your `config/routes.rb`
+          <pre class="code" data-lang="ruby"><code>Rails.application.routes.draw do
+  get "signed_in", to: "welcome#signed_in"
+  root :to => 'welcome#index'
+end</code></pre>
+        </li>
+        <li>Update the root and signed in views
+          <pre class="code"><code># app/views/welcome/index.html.erb
+&lt;h1&gt;Welcome to the sample app&lt;/h1&gt;
+&lt;p&gt;&lt;%= link_to "Sign up", new_user_registration_path %&gt;&lt;/p&gt;
+&lt;p&gt;&lt;%= link_to "Sign in", new_user_session_path %&gt;&lt;/p&gt;</code></pre>
+          <pre class="code"><code># app/views/welcome/signed_in.html.erb
+&lt;h1&gt;Welcome to the sample app&lt;/h1&gt;
+&lt;p&gt;You are signed in as &lt;%= current_user.email %&gt;&lt;/p&gt;</code></pre>
+        </li>
+        <li>Add the `devise` and `devise-authy` gems to your `Gemfile` and install
+          <pre class="code"><code>  gem 'devise', '~> 4.5'
+  gem 'devise-authy', '~> 1.9'</code></pre>
+          <pre class="code"><code>bundle install</code></pre>
+        </li>
+        <li>Install devise
+          <pre class="code"><code>rails generate devise:install</code></pre>
+        </li>
+        <li>
+          Add flash messages to the <code>app/views/layouts/application.html.erb</code> and update the default URL options in <code>config/environments/development.rb</code>
+          <pre class="code"><code>&lt;p class="notice"&gt;&lt;%= notice %&gt;&lt;/p&gt;
+&lt;p class="alert"&gt;&lt;%= alert %&gt;&lt;/p&gt;</code></pre>
+          <pre class="code"><code>config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }</code></pre>
+        </li>
+        <li>Generate a user model with Devise and migrate the database
+          <pre class="code"><code>rails generate devise User
+rails db:migrate</code></pre>
+        </li>
+        <li>Edit <code>app/controllers/welcome_controller.rb</code> and add:
+          <pre class="code"><code>class WelcomeController < ApplicationController
+  before_action :authenticate_user!, only: :signed_in
+
+  def index
+    redirect_to signed_in_path if user_signed_in?
+  end
+
+  def signed_in
+  end
+end</code></pre>
+        <li>Install <code>authy-devise </code>
+          <pre class="code"><code>rails generate devise_authy:install</code></pre>
+        </li>
+        <li>Open <code>config/initializers/authy.rb</code> and add your Authy API key (generate one in the <a href="https://www.twilio.com/console/authy/applications">Twilio Console</a>)
+          <pre class="code"><code>Authy.api_key = "YOUR_API_KEY"
+Authy.api_uri = "https://api.authy.com/"</code></pre>
+        </li>
+        <li>Add <code>authy-devise</code> to the <code>User</code> model and run the resulting migration
+          <pre class="code"><code>rails generate devise_authy User
+rails db:migrate</code></pre>
+        </li>
+        <li>Run the server and visit <a href="http://localhost:3000/users/sign_up">http://localhost:3000/users/sign_up</a> to create a user
+          <pre class="code"><code>rails server</code></pre>
+        </li>
+        <li>When signed in, visit <a href="http://localhost:3000/users/enable_authy">http://localhost:3000/users/enable_authy</a> to enable 2FA</li>
+        <li>Sign out and sign back in again and you will be required to enter your 2FA token</li>
+      </div>
+    </div>
+  </div>
+</section>

@@ -4,27 +4,35 @@ This is a demo of using [Devise](https://github.com/plataformatec/devise) and [A
 
 ## Running this demo
 
-TODO
+This demo was built with Ruby 2.5.1, but should run with any Ruby version that is supported by Rails/Devise.
 
-Things you may want to cover:
+To run this application download or clone it from GitHub, change into the directory and install the dependencies:
 
-* Ruby version
+```bash
+git clone https://github.com/twilio/authy-devise-demo.git
+cd authy-devise-demo
+bundle install
+```
 
-* System dependencies
+Create and migrate the database:
 
-* Configuration
+```bash
+rails db:create db:migrate
+```
 
-* Database creation
+Get your Authy application API key from the [Twilio console](https://www.twilio.com/console/authy/applications) and set it in your environment variables:
 
-* Database initialization
+```bash
+export AUTHY_API_KEY=YOUR_API_KEY
+```
 
-* How to run the test suite
+Run the Rails application:
 
-* Services (job queues, cache servers, search engines, etc.)
+```bash
+rails server
+```
 
-* Deployment instructions
-
-* ...
+Visit [localhost:3000](http://localhost:3000) and sign up as a new user.
 
 
 ## Building this demo yourself
@@ -136,7 +144,7 @@ Things you may want to cover:
   rails db:migrate
   ```
 
-12. Run the server and visit http://localhost:3000/users/sign_up to create an app
+12. Run the server and visit http://localhost:3000/users/sign_up to create a user
 
   ```bash
   rails server
