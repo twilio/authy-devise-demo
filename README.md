@@ -66,7 +66,7 @@ Things you may want to cover:
   <p>You are signed in as <%= current_user.email %></p>
   ```
 
-4. Add the `devise` and `devise-authy` gems to your `Gemfile` and install
+5. Add the `devise` and `devise-authy` gems to your `Gemfile` and install
 
   ```ruby
   gem 'devise', '~> 4.5'
@@ -77,13 +77,13 @@ Things you may want to cover:
   bundle install
   ```
 
-5. Install devise
+6. Install devise
 
   ```bash
   rails generate devise:install
   ```
 
-6. Add flash messages to the `app/views/layouts/application.html.erb` and update the default URL options in `config/environments/development.rb`
+7. Add flash messages to the `app/views/layouts/application.html.erb` and update the default URL options in `config/environments/development.rb`
 
   ```html
   <p class="notice"><%= notice %></p>
@@ -94,7 +94,7 @@ Things you may want to cover:
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   ```
 
-7. Generate a user model with Devise and migrate the database
+8. Generate a user model with Devise and migrate the database
 
   ```bash
   rails generate devise User
@@ -114,4 +114,17 @@ Things you may want to cover:
     def signed_in
     end
   end
+  ```
+
+9. Install `authy-devise`
+
+  ```bash
+   rails g devise_authy:install
+  ```
+
+10. Open `config/initializers/authy.rb` and add your Authy API key
+
+  ```ruby
+  Authy.api_key = "YOUR_API_KEY"
+  Authy.api_uri = "https://api.authy.com/"
   ```
