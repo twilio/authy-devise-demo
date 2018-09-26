@@ -135,3 +135,13 @@ Things you may want to cover:
   rails generate devise_authy User
   rails db:migrate
   ```
+
+12. Run the server and visit http://localhost:3000/users/sign_up to create an app
+
+  ```bash
+  rails server
+  ```
+
+13. When signed in, visit http://localhost:3000/users/enable_authy to enable 2FA
+
+14. Sign out and sign back in again and you will be required to enter your 2FA token

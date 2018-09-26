@@ -21,6 +21,8 @@
   font-size: 14px;
   font-weight: normal;
   line-height: 20px;
+}
+
+.countries-input {
   padding: 8px;
-  margin: 8px;
 }

@@ -7,4 +7,13 @@
     <%= image_tag gravatar_url(current_user.email, 64), width: 64, height: 64, class: "avatar avatar-xl" %>
   </div>
   <p class="empty-title h5">You are signed in as <%= current_user.email %></p>
+
+  <div class="empty-action">
+    <% if current_user.authy_enabled %>
+      <p class="empty-title h6">Two factor authentication is enabled 👍</p>
+      <%= link_to "Disable 2FA",  user_disable_authy_path, method: 'POST', class: "btn btn-sm btn-error" %>
+    <% else %>
+      <%= link_to "Enable 2FA",  user_enable_authy_path, class: "btn btn-primary" %>
+    <% end %>
+  </div>
 </div>
