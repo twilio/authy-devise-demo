@@ -39,15 +39,31 @@ Things you may want to cover:
 2. Generate a controller
 
   ```bash
-  rails generate controller welcome index
+  rails generate controller welcome index signed_in
   ```
 
-3. Add the root path to your `config/routes.rb`
+3. Add a root path and signed in path to your `config/routes.rb`
 
   ```ruby
   Rails.application.routes.draw do
+    get "signed_in", to: "welcome#signed_in"
     root :to => 'welcome#index'
   end
+  ```
+
+4. Update the root and signed in views
+
+  ```erb
+  # app/views/welcome/index.html.erb
+  <h1>Welcome to the sample app</h1>
+  <p><%= link_to "Sign up", new_user_registration_path %></p>
+  <p><%= link_to "Sign in", new_user_session_path %></p>
+  ```
+
+  ```erb
+  # app/views/welcome/signed_in.html.erb
+  <h1>Welcome to the sample app</h1>
+  <p>You are signed in as <%= current_user.email %></p>
   ```
 
 4. Add the `devise` and `devise-authy` gems to your `Gemfile` and install
@@ -83,4 +99,19 @@ Things you may want to cover:
   ```bash
   rails generate devise User
   rails db:migrate
+  ```
+
+8. Edit `app/controllers/welcome_controller.rb` and add:
+
+  ```ruby
+  class WelcomeController < ApplicationController
+    before_action :authenticate_user!, only: :signed_in
+
+    def index
+      redirect_to signed_in_path if user_signed_in?
+    end
+
+    def signed_in
+    end
+  end
   ```
