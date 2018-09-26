@@ -119,12 +119,19 @@ Things you may want to cover:
 9. Install `authy-devise`
 
   ```bash
-   rails g devise_authy:install
+   rails generate devise_authy:install
   ```
 
-10. Open `config/initializers/authy.rb` and add your Authy API key
+10. Open `config/initializers/authy.rb` and add your Authy API key (generate one in the [Twilio Console](https://www.twilio.com/console/authy/applications))
 
   ```ruby
   Authy.api_key = "YOUR_API_KEY"
   Authy.api_uri = "https://api.authy.com/"
+  ```
+
+11. Add `authy-devise` to the `User` model and run the resulting migration
+
+  ```bash
+  rails generate devise_authy User
+  rails db:migrate
   ```
