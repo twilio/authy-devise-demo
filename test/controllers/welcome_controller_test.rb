@@ -25,6 +25,23 @@ class WelcomeControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to signed_in_url
   end
 
+  test "signing in with a POST (not using Devise helper)" do
+    user = users(:one)
+    get '/users/sign_in'
+    csrf_token = form_authenticity_token(response.body)
+
+    post '/users/sign_in', params: {
+      authenticity_token: csrf_token,
+      user: { email: user.email, password: 'testpass' }
+    }
+
+    assert_response :redirect
+    assert_redirected_to root_url
+
+    assert_response :redirect
+    assert_redirected_to signed_in_url
+  end
+
   test "with a signed in user the signed in page loads" do
     user = users(:one)
     sign_in user

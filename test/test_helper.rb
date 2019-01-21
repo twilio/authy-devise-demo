@@ -7,6 +7,11 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+  def form_authenticity_token(body)
+    regex = /type="hidden" name="authenticity_token" value="(?<token>.+)"/
+    parts = response.body.match(regex)
+    parts['token'] if parts
+  end
 end
 
 class ActionDispatch::IntegrationTest
