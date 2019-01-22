@@ -37,9 +37,6 @@ class WelcomeControllerTest < ActionDispatch::IntegrationTest
 
     assert_response :redirect
     assert_redirected_to root_url
-
-    assert_response :redirect
-    assert_redirected_to signed_in_url
   end
 
   test "with a signed in user the signed in page loads" do
