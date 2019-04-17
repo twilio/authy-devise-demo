@@ -86,6 +86,10 @@ GEM
     devise-authy (1.11.1)
       authy (>= 2.7.5)
       devise (>= 3.0.0)
+    dotenv (2.7.2)
+    dotenv-rails (2.7.2)
+      dotenv (= 2.7.2)
+      railties (>= 3.2, < 6.1)
     erubi (1.8.0)
     execjs (2.7.0)
     ffi (1.9.25)
@@ -220,6 +224,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   devise (~> 4.5)
   devise-authy (~> 1.9)
+  dotenv-rails
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
   puma (~> 3.11)
