@@ -22,9 +22,19 @@ rails db:create db:migrate
 
 Get your Authy application API key from the [Twilio console](https://www.twilio.com/console/authy/applications) and set it in your environment variables:
 
+Through CLI:
+
 ```bash
 export AUTHY_API_KEY=YOUR_API_KEY
 ```
+
+Or in .env:
+
+```bash
+cp .env{.example,}
+```
+
+Place API key in .env file generated from above command.
 
 Run the Rails application:
 
