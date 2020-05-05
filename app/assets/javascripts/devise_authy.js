@@ -1,12 +1,18 @@
-$(document).ready(function() {
-  $('a#authy-request-sms-link').unbind('ajax:success');
-  $('a#authy-request-sms-link').bind('ajax:success', function(evt, data, status, xhr) {
-    alert(data.message);
-  });
-
-  $('a#authy-request-phone-call-link').unbind('ajax:success');
-  $('a#authy-request-phone-call-link').bind('ajax:success', function(evt, data, status, xhr) {
-    alert(data.message);
-  });
+window.addEventListener('DOMContentLoaded', function() { 
+  var authySuccess = function(event) {
+    var data = event.detail[0];
+    if (data && data.message) {
+      alert(data.message);
+    }
+  }
+  var requestSmsLink = document.getElementById('authy-request-sms-link');
+  var requestPhoneCallLink = document.getElementById('authy-request-phone-call-link');
+  if (requestSmsLink) {
+    requestSmsLink.removeEventListener('ajax:success', authySuccess);
+    requestSmsLink.addEventListener('ajax:success', authySuccess);
+  }
+  if (requestPhoneCallLink) {
+    requestPhoneCallLink.removeEventListener('ajax:success', authySuccess);
+    requestPhoneCallLink.addEventListener('ajax:success', authySuccess);
+  }
 });
-
