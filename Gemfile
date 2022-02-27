@@ -33,7 +33,7 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-gem 'devise', '~> 4.8', '>= 4.8.0'
+gem 'devise', '~> 4.8', '>= 4.8.1'
 gem 'devise-authy', '~> 2.3', '>= 2.3.0'
 
 # Reduces boot times through caching; required in config/boot.rb
